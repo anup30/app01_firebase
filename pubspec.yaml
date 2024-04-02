@@ -35,10 +35,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  #flare_flutter: ^3.0.2
-  #rive: ^0.13.1 # -> problem
-  #rive: 0.11.11 # -> problem
-  rive: ^0.8.4 # worked
   firebase_core: ^2.27.2
 
 dev_dependencies:
