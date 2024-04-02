@@ -1,4 +1,6 @@
-// added to firebase project
+// app added to firebase project
+// guide: https://firebase.google.com/docs/flutter/setup?platform=ios
+
 // random Color // use stream/concurrency for large ListTile ?
 // issue: color flickering on hot reload, for function usage. build gets called twice without setState (v2, with solution)
 // see also: https://stackoverflow.com/questions/64834702/why-build-function-gets-called-twice-when-hot-restarting
