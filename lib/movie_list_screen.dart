@@ -37,6 +37,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Movies'),
+        backgroundColor: Colors.blue,
       ),
       body: StreamBuilder(
         stream: _firebaseFirestore.collection('movies').snapshots(),
