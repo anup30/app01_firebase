@@ -28,6 +28,8 @@ class _MovieListScreenState extends State<MovieListScreen4016> {
         );
       }
       print("movieList length = ${movieList.length}");
+      print("name[0]=${movieList[0].name}");
+
     });
   }
   @override
