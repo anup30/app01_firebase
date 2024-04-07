@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // ui(body) is not building for this page -----------------------
-class MovieListScreen4016 extends StatefulWidget {
+class MovieListScreen4016 extends StatefulWidget { /// up to 40:16 of firebase class 2 video
   const MovieListScreen4016({super.key});
 
   @override
@@ -27,6 +27,7 @@ class _MovieListScreenState extends State<MovieListScreen4016> {
           Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),
         );
       }
+      print("movieList length = ${movieList.length}");
     });
   }
   @override
