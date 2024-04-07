@@ -22,14 +22,13 @@ class _MovieListScreenState extends State<MovieListScreen4016> {
       //print(value); //Instance of '_JsonQuerySnapshot'
       movieList.clear();
       for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <---
-        print(doc.data()); // prints my firestore 'movies' data
+        print(doc.data()); // prints my firestore 'movies' data //ok
         movieList.add(
           Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),
         );
       }
-      print("movieList length = ${movieList.length}");
-      print("name[0]=${movieList[0].name}");
-
+      print("movieList length = ${movieList.length}"); //ok
+      print("name[0]=${movieList[0].name}"); //ok
     });
   }
   @override
@@ -51,7 +50,6 @@ class _MovieListScreenState extends State<MovieListScreen4016> {
     );
   }
 }
-
 
 class Movie{  // model/pojo class
   final String id, name, languages, year, rating /*,earning*/;
