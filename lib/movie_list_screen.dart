@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-//import 'main.dart';
-
 
 class MovieListScreen extends StatefulWidget {
   const MovieListScreen({super.key});
@@ -20,18 +18,18 @@ class _MovieListScreenState extends State<MovieListScreen> {
     //FirebaseAuth.getInstance(); // xx
     //_getMovieList(); // <--------- getting problem if initialized here, latter building body.
   }
-  void _getMovieList(){
-    _firebaseFirestore.collection('movies').get().then((value){ // <--- where from ? , class 2, Getting all documents from one collection
-      //print(value); //Instance of '_JsonQuerySnapshot'
-      movieList.clear();
-      for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <---
-        print(doc.data()); // prints my firestore 'movies' data
-        movieList.add(
-            Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),
-        );
-      }
-    });
-  }
+  // void _getMovieList(){
+  //   _firebaseFirestore.collection('movies').get().then((value){ // <--- where from ? , class 2, Getting all documents from one collection
+  //     //print(value); //Instance of '_JsonQuerySnapshot'
+  //     movieList.clear();
+  //     for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <---
+  //       print(doc.data()); // prints my firestore 'movies' data
+  //       movieList.add(
+  //           Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),
+  //       );
+  //     }
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +75,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
               Map<String, dynamic> newMovie = {
                 'name' : 'King kong updated',
                 'year' : '1996',
-                'languages' : "English, Bangla, Hindi",
+                'languages' : "English, Bengali, Hindi",
                 'rating' : '3.4'
               };
 
