@@ -2,7 +2,7 @@
 // guide: https://firebase.google.com/docs/flutter/setup?platform=ios
 
 import 'package:app01/movie.dart';
-import 'package:app01/movie_list_at40.16.dart';
+import 'package:app01/movie_list_screen2.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:app01/movie_list_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +27,7 @@ class MoviesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MovieListScreen4016(), // try, MovieListScreen4016()
+      home: MovieListScreen2(), // try, MovieListScreen4016()
     );
   }
 }
