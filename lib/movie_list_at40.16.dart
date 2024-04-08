@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // ui(body) is not building for this page -----------------------
 class MovieListScreen4016 extends StatefulWidget { /// up to 40:16 of firebase class 2 video
   const MovieListScreen4016({super.key});
-
+  static List<Movie> movieList =[];
   @override
   State<MovieListScreen4016> createState() => _MovieListScreenState();
 }
@@ -11,32 +11,62 @@ class MovieListScreen4016 extends StatefulWidget { /// up to 40:16 of firebase c
 
 class _MovieListScreenState extends State<MovieListScreen4016> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance; // https://firebase.google.com/docs/storage/flutter/start
-  final List<Movie> movieList =[];
+  //final List<Movie> movieList =[];
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   //_getMovieList(); // <--------- getting problem if initialized here, latter building body.
+  // }
+
   @override
   void initState() {
     super.initState();
-    _getMovieList(); // <--------- getting problem if initialized here, latter building body.
+    //WidgetsBinding.instance.addPostFrameCallback((timeStamp) { _getMovieList();});
+    _getMovieList();
   }
-  void _getMovieList(){
+  Future <void> _getMovieList()async{ //statically fetch
     _firebaseFirestore.collection('movies').get().then((value){ // <--- where from ? , class 2, Getting all documents from one collection
       //print(value); //Instance of '_JsonQuerySnapshot'
-      movieList.clear();
+      MovieListScreen4016.movieList.clear();
       for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <---
         print(doc.data()); // prints my firestore 'movies' data //ok
-        movieList.add(
+        MovieListScreen4016.movieList.add(
           Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),
         );
       }
-      print("movieList length = ${movieList.length}"); //ok
-      print("name[0]=${movieList[0].name}"); //ok
+      print("movieList length = ${MovieListScreen4016.movieList.length}"); //ok
+      print("name[0]=${MovieListScreen4016.movieList[0].name}"); //ok
     });
+  }
+
+  Future<Widget> myFunc()async{
+    _firebaseFirestore.collection('movies').get().then((value){ // <--- where from ? , class 2, Getting all documents from one collection
+      //print(value);
+      MovieListScreen4016.movieList.clear();
+      for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <---
+        print(doc.data()); // prints my firestore 'movies' data //ok
+        MovieListScreen4016.movieList.add(
+          Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),
+        );
+      }
+      print("movieList length = ${MovieListScreen4016.movieList.length}");
+      print("name[0]=${MovieListScreen4016.movieList[0].name}");
+    });
+    return Text("a Text Widget");//movieList[0].name;
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Movies"),backgroundColor: Colors.blue),
-      body: ListView.separated(
-        itemCount: movieList.length,
+      body: Center(
+        //child: Text(movieList[0].name), ///RangeError (index): Invalid value: Valid value range is empty: 0
+        //child: myFunc(); // The argument type 'Future<Widget>' can't be assigned to the parameter type 'Widget?'.
+        child: MovieListScreen4016.movieList.isNotEmpty?Text("movieList.length = ${MovieListScreen4016.movieList.length}"):const Text("movieList.length is 0"),
+        // ^ getting empty list here, but had elements in initState print! ------------------------------------------------------------------------------------------
+      ),
+      /*body: ListView.separated(
+        itemCount: movieList.length, // <--- empty list
         itemBuilder: (context,index){
           return ListTile(
             title: Text(movieList[index].name),
@@ -46,7 +76,7 @@ class _MovieListScreenState extends State<MovieListScreen4016> {
           );
         },
         separatorBuilder:(_,__)=> const Divider(),
-      ),
+      ),*/
     );
   }
 }
