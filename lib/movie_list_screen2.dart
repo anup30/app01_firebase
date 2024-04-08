@@ -1,8 +1,6 @@
 import 'package:app01/movie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:app01/main.dart';
-//import 'package:flutter/scheduler.dart';
 
 class MovieListScreen2 extends StatefulWidget { /// up to 40:16 of firebase class 2 video
   const MovieListScreen2({super.key});
@@ -13,7 +11,7 @@ class MovieListScreen2 extends StatefulWidget { /// up to 40:16 of firebase clas
 
 class _MovieListScreenState extends State<MovieListScreen2> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance; // https://firebase.google.com/docs/storage/flutter/start
-  //final List<Movie> movieList =[];
+  final List<Movie> movieList =[];
   // @override
   // void initState() {
   //   super.initState();
@@ -23,36 +21,25 @@ class _MovieListScreenState extends State<MovieListScreen2> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) { getMovieList();});
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) { _getMovieList();});
     //_getMovieList();
   }
 
-  // Future <void> _getMovieList()async{ //statically fetch
-  //   _firebaseFirestore.collection('movies').get().then((value){ // <--- where from ? , class 2, Getting all documents from one collection
-  //     //print(value); //Instance of '_JsonQuerySnapshot'
-  //     MovieListScreen4016.movieList.clear();
-  //     for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <---
-  //       print(doc.data()); // prints my firestore 'movies' data //ok
-  //       MovieListScreen4016.movieList.add(Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),);
-  //     }
-  //     print("movieList length = ${MovieListScreen4016.movieList.length}"); //ok
-  //     print("name[0]=${MovieListScreen4016.movieList[0].name}"); //ok
-  //   });
-  // }
-
-  Future<Widget> myFunc()async{
+  Future <void> _getMovieList()async{ //statically fetch
+    await Future.delayed(Duration.zero); // <--- Add a 0 dummy waiting time, write inside build ?
     _firebaseFirestore.collection('movies').get().then((value){ // <--- where from ? , class 2, Getting all documents from one collection
-      //print(value);
-      MovieListScreen2.movieList.clear();
+      //print(value); //Instance of '_JsonQuerySnapshot'
+      movieList.clear();
       for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <---
         print(doc.data()); // prints my firestore 'movies' data //ok
-        MovieListScreen2.movieList.add(Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),);
+        movieList.add(Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),);
       }
-      print("movieList length = ${MovieListScreen2.movieList.length}");
-      print("name[0]=${MovieListScreen2.movieList[0].name}");
+      print("movieList length = ${movieList.length}"); //ok
+      print("name[0]=${movieList[0].name}"); //ok
+      setState(() {});
     });
-    return Text("a Text Widget");//movieList[0].name;
   }
+
   @override
   Widget build(BuildContext context) {
     ///WidgetsBinding.instance.addPostFrameCallback((_) => _getMovieList());
@@ -67,13 +54,13 @@ class _MovieListScreenState extends State<MovieListScreen2> {
         // ^ getting empty list here, but had elements in initState print! ------------------------------------------------------------------------------------------
       ),*/
       body: ListView.separated(
-        itemCount: mList.length, // <--- empty list
+        itemCount: movieList.length, // <--- empty list?
         itemBuilder: (context,index){
           return ListTile(
-            title: Text(mList[index].name),
-            subtitle: Text(mList[index].languages),
-            leading: Text(mList[index].rating),
-            trailing: Text(mList[index].year),
+            title: Text(movieList[index].name),
+            subtitle: Text(movieList[index].languages),
+            leading: Text(movieList[index].rating),
+            trailing: Text(movieList[index].year),
           );
         },
         separatorBuilder:(_,__)=> const Divider(),
