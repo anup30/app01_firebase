@@ -12,7 +12,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  //await Future.delayed(const Duration(seconds: 3)); /// <---
+  //await Future.delayed(const Duration(seconds: 2)); /// <---
   runApp(const MoviesApp());
 }
 
