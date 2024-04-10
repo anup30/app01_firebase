@@ -1,12 +1,27 @@
 // app added to firebase project
 // guide: https://firebase.google.com/docs/flutter/setup?platform=ios
 
-import 'package:app01/movie_list_screen2.dart';
+//import 'package:app01/movie_list_screen2.dart';
+import 'package:app01/movie_list_screen3.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 
 // firebase class2, on time at: 40:00
+/*
+  Documentation> Cloud Storage for Firebase
+  build>Firestore
+  Cloud Firestore(for text data)
+
+  on left pane,
+  1) get started... (add data/ read data)
+  go console, project, on left pane, Firestore Database, Start collection -> add data manually,
+  2) Read data -> get real-time updates
+  3) add and manage data -> delete data
+
+  my project -> build -> storage
+*/
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // <-- for firebase
   await Firebase.initializeApp(
@@ -22,7 +37,7 @@ class MoviesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MovieListScreen2(), // try, MovieListScreen4016()
+      home: MovieListScreen3(), // try, MovieListScreen4016()
     );
   }
 }
@@ -42,3 +57,8 @@ add, multiDexEnabled true
 2) in dependencies {}
 add, implementation 'com.android.support:multidex:1.0.3'
 */
+
+// assignment:
+// TO DO: 1. set up firebase storage
+// TO DO: 2. pick new image/videos from gallery and put into firebase storage
+// TO DO: 3. show list of images from storage in gridview

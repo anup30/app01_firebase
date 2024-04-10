@@ -76,7 +76,6 @@ class _MovieListScreenState extends State<MovieListScreen> {
                 'languages' : "English, Bengali, Hindi",
                 'rating' : '3.4'
               };
-
               _firebaseFirestore.collection('movies').doc('new-doc-1').set(newMovie);
               // _firebaseFirestore.collection('movies').doc('new-doc-1').update(newMovie);
             },

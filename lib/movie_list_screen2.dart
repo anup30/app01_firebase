@@ -18,25 +18,25 @@ class _MovieListScreenState extends State<MovieListScreen2> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) { _getMovieList();});
-    //_getMovieList();
+    //WidgetsBinding.instance.addPostFrameCallback((timeStamp) { _getMovieList();});
+    _getMovieList();
   }
-
-  Future <void> _getMovieList()async{ //statically fetch
-    _isLoading=true;
-    setState(() {});
-    await Future.delayed(Duration.zero); // <--- Add a 0 dummy waiting time, write inside build ?
+  void _getMovieList(){
+  //Future <void> _getMovieList()async{ //statically fetch
+    //_isLoading=true;
+    //setState(() {});
+    //await Future.delayed(Duration.zero); // <--- Add a 0 dummy waiting time, write inside build ?
     _firebaseFirestore.collection('movies').get().then((value){ // <--- where from ? , class 2, Getting all documents from one collection
-      print(value); //Instance of '_JsonQuerySnapshot'
+      //print(value); //Instance of '_JsonQuerySnapshot'
       movieList.clear();
-      for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <---
-        print(doc.data()); // prints my firestore 'movies' data //ok
+      for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <--- //doc: https://firebase.google.com/docs/firestore/quickstart
+        //print(doc.data()); // prints my firestore 'movies' data //ok
         movieList.add(Movie.fromJson(doc.id, doc.data() as Map<String,dynamic>),);
       }
-      print("movieList length = ${movieList.length}"); //ok
-      print("name[0]=${movieList[0].name}"); //ok
-      _isLoading=false;
-      setState(() {});
+      //print("movieList length = ${movieList.length}"); //ok
+      //print("name[0]=${movieList[0].name}"); //ok
+      //_isLoading=false;
+      setState(() {}); // at 40:25 of class 2 video, works without setState
     });
   }
 
