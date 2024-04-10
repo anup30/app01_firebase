@@ -2,7 +2,7 @@ import 'package:app01/movie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class MovieListScreen extends StatefulWidget {
+class MovieListScreen extends StatefulWidget { // firebase class 2 github code
   const MovieListScreen({super.key});
 
   @override

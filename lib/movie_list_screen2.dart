@@ -21,10 +21,10 @@ class _MovieListScreenState extends State<MovieListScreen2> {
     //WidgetsBinding.instance.addPostFrameCallback((timeStamp) { _getMovieList();});
     _getMovieList();
   }
-  void _getMovieList(){
-  //Future <void> _getMovieList()async{ //statically fetch
-    //_isLoading=true;
-    //setState(() {});
+  //void _getMovieList(){
+  Future <void> _getMovieList()async{ //statically fetch
+    _isLoading=true;
+    setState(() {});
     //await Future.delayed(Duration.zero); // <--- Add a 0 dummy waiting time, write inside build ?
     _firebaseFirestore.collection('movies').get().then((value){ // <--- where from ? , class 2, Getting all documents from one collection
       //print(value); //Instance of '_JsonQuerySnapshot'
@@ -35,7 +35,7 @@ class _MovieListScreenState extends State<MovieListScreen2> {
       }
       //print("movieList length = ${movieList.length}"); //ok
       //print("name[0]=${movieList[0].name}"); //ok
-      //_isLoading=false;
+      _isLoading=false;
       setState(() {}); // at 40:25 of class 2 video, works without setState
     });
   }
