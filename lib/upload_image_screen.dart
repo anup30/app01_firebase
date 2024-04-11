@@ -97,11 +97,11 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
               style: elevatedButtonStyleFrom,
             ),
             const SizedBox(height: 10,),
-            ElevatedButton(
-              onPressed: (){},
-              style: elevatedButtonStyleFrom,
-              child: const Text("Load from firebase Storage"),
-            ),
+            // ElevatedButton(
+            //   onPressed: (){},
+            //   style: elevatedButtonStyleFrom,
+            //   child: const Text("Load from firebase Storage"),
+            // ),
             /// gridview
             Expanded(
               child: GridView.builder(
