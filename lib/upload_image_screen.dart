@@ -55,7 +55,7 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
     setState(() {});
   }
   final elevatedButtonStyleFrom = ElevatedButton.styleFrom(
-    backgroundColor: Colors.blue[100],
+    backgroundColor: Colors.blue[50],
     foregroundColor: Colors.green[800],
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     textStyle: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
@@ -107,10 +107,9 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,crossAxisSpacing: 3),
                 itemBuilder: (context,index) {
                   return SizedBox(
-                    child: Image.network(urlImageList[index]!,
-                      //height: 200, //<------------- 9:30
-                      fit: BoxFit.contain, //------------------------------------
-                    ),
+                    width: 100,
+                    height: 100,
+                    child: Image.network(urlImageList[index]!, fit: BoxFit.contain,),
                   );
                 },
                 itemCount: urlImageList.length,
