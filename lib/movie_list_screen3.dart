@@ -1,5 +1,5 @@
 import 'package:app01/movie.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // -> https://firebase.google.com/docs/firestore/quickstart#dart
 import 'package:flutter/material.dart';
 
 class MovieListScreen3 extends StatefulWidget {
