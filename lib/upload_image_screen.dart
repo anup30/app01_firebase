@@ -70,7 +70,7 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 10,),
-            _isLoading==false? Text("Total images added to firebase Storage = ${urlImageList.length}",style: const TextStyle(fontSize: 20),):
+            _isLoading==false? Text("Total images added to firebase Storage: ${urlImageList.length}",style: const TextStyle(fontSize: 20),):
             const Center(
               child: SizedBox(
                 height: 30,width: 30,
