@@ -21,7 +21,7 @@ class _MovieListScreenState extends State<MovieListScreen3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Movies"),backgroundColor: Colors.blue),
+      appBar: AppBar(title: const Text("Movies screen3"),backgroundColor: Colors.blue),
       body: StreamBuilder( // <-------- auto updates if updated in Cloud Firestore
         stream: _firebaseFirestore.collection('movies').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){

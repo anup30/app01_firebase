@@ -1,3 +1,4 @@
+// firebase class 2
 import 'package:app01/movie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movies'),
+        title: const Text('Movies class2 -Rafat'),
         backgroundColor: Colors.blue,
       ),
       body: StreamBuilder(

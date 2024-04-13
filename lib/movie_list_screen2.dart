@@ -45,7 +45,7 @@ class _MovieListScreenState extends State<MovieListScreen2> {
     //WidgetsBinding.instance.addPostFrameCallback((_) => _getMovieList()); // error: getting continuous call to _getMovieList()
     //SchedulerBinding.instance.addPostFrameCallback((_) {_getMovieList();}); // ^ same
     return Scaffold(
-      appBar: AppBar(title: const Text("Movies"),backgroundColor: Colors.blue),
+      appBar: AppBar(title: const Text("Movies screen2"),backgroundColor: Colors.blue),
       body: SizedBox(
         child: Visibility(
           visible: _isLoading==false,
