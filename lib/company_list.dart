@@ -37,7 +37,11 @@ class _CompanyListScreenState extends State<CompanyListScreen> {
       for(QueryDocumentSnapshot doc in value.docs){ // or var doc, class 2 <--- //doc: https://firebase.google.com/docs/firestore/quickstart
         print("doc.data() = \n${doc.data()}"); //
         Map<dynamic,dynamic> m = doc.data() as Map; // has only 1 entry, if multiple add in a list.
-        print("President = ${m["president"]}\nEngineer = ${m["engineer"]}\nCeo= ${m["ceo"]}");
+        print(
+            "President = ${m["president"]}\n"
+            "Engineer = ${m["engineer"]}\n"
+            "Ceo= ${m["ceo"]}"
+        );
       }
     });
   }
