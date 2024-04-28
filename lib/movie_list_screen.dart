@@ -1,4 +1,4 @@
-// firebase class 2
+// firebase class 2 <---------------------
 import 'package:app01/movie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class _MovieListScreenState extends State<MovieListScreen> {
         title: const Text('Movies class2 -Rafat'),
         backgroundColor: Colors.blue,
       ),
-      body: StreamBuilder(
+      body: StreamBuilder( // <-----------------
           stream: _firebaseFirestore.collection('movies').snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
@@ -53,9 +53,10 @@ class _MovieListScreenState extends State<MovieListScreen> {
             }
             return ListView.separated(
               itemCount: movieList.length,
+              //itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(movieList[index].name),
+                  title: Text(movieList[index].name), // snapshot.data!.docs[index].name ?
                   subtitle: Text(movieList[index].languages),
                   leading: Text(movieList[index].rating),
                   trailing: Text(movieList[index].year),

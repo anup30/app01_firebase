@@ -15,9 +15,9 @@ class _StorageScreenState extends State<StorageScreen> {
   final FirebaseStorage storage = FirebaseStorage.instance;
   //Create a Cloud Storage reference on Flutter
   //https://firebase.google.com/docs/storage/flutter/create-reference
-  final storageRef = FirebaseStorage.instance.ref(); // <- Points to the root reference
-  final imagesRef = FirebaseStorage.instance.ref().child("pictures"); // not storageRef // <- Points to "pictures"
-  final spaceRef = FirebaseStorage.instance.ref().child("pictures/star pic.png"); // not storageRef.child("pictures/star pic.png.jpg");
+  final Reference storageRef = FirebaseStorage.instance.ref(); // <- Points to the root reference
+  final Reference imagesRef = FirebaseStorage.instance.ref().child("pictures"); // not storageRef // <- Points to "pictures"
+  final Reference spaceRef = FirebaseStorage.instance.ref().child("pictures/star pic.png"); // not storageRef.child("pictures/star pic.png.jpg");
   //final imagesRef2 = spaceRef.parent; //The instance member 'spaceRef' can't be accessed in an initializer. (Documentation)
   //final imagesRef3 = spaceRef.root; //The instance member 'spaceRef' can't be accessed in an initializer. (Documentation)
   //accessing root.parent results in null.
