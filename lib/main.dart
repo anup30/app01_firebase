@@ -1,5 +1,15 @@
 // app added to firebase project 🔥
 // guide: https://firebase.google.com/docs/flutter/setup?platform=ios
+// reading nested collection in firestore: see company_list.dart
+
+/*
+for,
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: [cloud_firestore/permission-denied] The caller does not have permission to execute the specified operation.
+see,
+https://stackoverflow.com/questions/54479483/get-error-firestore-the-caller-does-not-have-permission-to-execute-the-specif
+or, update security rules
+* */
+
 
 import 'package:app01/company_list.dart';
 import 'package:app01/firebase_messaging_service.dart';
